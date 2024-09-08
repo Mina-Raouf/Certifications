@@ -17,32 +17,47 @@
             justify-content: center;
         }
         img {
-            max-width: 100%;
-            height: auto;
+            max-width: 30%;
+            height: 800px;
+            width:800px;
             display: none;
         }
         input[type="text"]{
             width: 300px;
             height: 30px;
-            font-size: 16px;
+            font-size: 30px;
+            text-align: center;
         }
         button{
-            width: 200px;
-            height: 36px;
+            width: 307px;
+            height: 38px;
+            font-size: 25px;
+            text-align: center;
+        }
+        .download-button {
+            margin-top: 20px;
+            padding: 10px 20px;
             font-size: 16px;
+            color: white;
+            background-color: #007bff;
+            text-decoration: none;
+            border-radius: 5px;
+            cursor: pointer;
         }
     </style>
 </head>
 <body>
 
-    <h1>Enter Your ID to Display Certificate</h1>
     
-    <input type="text" id="idInput" placeholder="Enter ID" >
-    <button onclick="showPicture()">Show</button>
+    <img src="pic.jpg" style="display: inline; width:600px; height: 400px; ">
+    <h1>(ادخل الكود لتحميل النتيجة)</h1>
+    <input type="text" id="idInput" placeholder="ادخل الكود" ><br><br>
+    <button onclick="showPicture()">إظهار</button>
 
     <div id="imageContainer">
         <img id="picture" alt="Certificate will appear here">
     </div>
+
 
     <script>
         function showPicture() {
@@ -59,8 +74,9 @@
 
             picture.onerror = function() {
                 picture.style.display = 'none';
-                alert('No Certificate found for this ID');
+                alert('كود الطالب خاطئ اعد المحاولة');
             };
+            
         }
     </script>
 
