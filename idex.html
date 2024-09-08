@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ID to Picture</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        #imageContainer {
+            margin-top: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Enter ID to Display Certificate</h1>
+    
+    <input type="text" id="idInput" placeholder="Enter ID">
+    <button onclick="showPicture()">Show Certificate</button>
+
+    <div id="imageContainer">
+        <img id="picture" alt="Certificate will appear here">
+    </div>
+
+    <script>
+        function showPicture() {
+            const id = document.getElementById('idInput').value;
+            const picture = document.getElementById('picture');
+            const imagePath = `${id}.jpg`;  // Assuming images are named like '123.jpg', '456.jpg', etc.
+
+            // Set the image source to the constructed path
+            picture.src = imagePath;
+
+            // Attempt to load the image to check if it exists
+            picture.onload = function() {
+                picture.style.display = 'block';
+            };
+
+            // If the image fails to load, hide the image and alert the user
+            picture.onerror = function() {
+                picture.style.display = 'none';
+                alert('No Certificate found for this ID');
+            };
+        }
+    </script>
+
+</body>
+</html>
