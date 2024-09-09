@@ -15,28 +15,46 @@
             margin-top: 100px;
             align-items: center;
             justify-content: center;
+            flex-direction: column;
         }
         img {
             max-width: 70%;
             height: auto;
-            width:auto;
+            width: auto;
             display: none;
+            margin-bottom: 20px;
         }
-        input[type="text"]{
+        input[type="text"] {
             width: 300px;
             height: 30px;
             font-size: 30px;
             text-align: center;
         }
-        button{
+        button {
             width: 307px;
             height: 38px;
             font-size: 30px;
             text-align: center;
             background-color: #0080ff;
-            
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
         }
-        
+        #downloadButton {
+            display: none;
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 20px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #downloadButton:hover {
+            background-color: #218838;
+        }
     </style>
 </head>
 <body>
@@ -45,32 +63,45 @@
     <img src="pic.jpg" style="display: inline; max-width: 40%;">
     <h1>نتيجة المستوى الأول - صيف ٢٠٢٤</h1>
     <h1>(ادخل الكود للاستعلام عن النتيجة)</h1>
-    <input type="text" id="idInput" placeholder="ادخل الكود" ><br><br>
+    <input type="text" id="idInput" placeholder="ادخل الكود"><br><br>
     <button onclick="showPicture()">استعلام</button>
 
     <div id="imageContainer">
         <img id="picture" alt="Certificate will appear here">
+        <button id="downloadButton" onclick="downloadPicture()">تحميل النتيجة</button>
     </div>
-
 
     <script>
         function showPicture() {
             const id = document.getElementById('idInput').value;
             const picture = document.getElementById('picture');
+            const downloadButton = document.getElementById('downloadButton');
             const imagePath = `${id}.jpg`;  
 
-           
             picture.src = imagePath;
 
             picture.onload = function() {
                 picture.style.display = 'block';
+                downloadButton.style.display = 'inline-block';
+                downloadButton.setAttribute('data-image-path', imagePath);
             };
 
             picture.onerror = function() {
                 picture.style.display = 'none';
+                downloadButton.style.display = 'none';
                 alert('كود الطالب خاطئ اعد المحاولة');
             };
-            
+        }
+
+        function downloadPicture() {
+            const downloadButton = document.getElementById('downloadButton');
+            const imagePath = downloadButton.getAttribute('data-image-path');
+            const link = document.createElement('a');
+            link.href = imagePath;
+            link.download = imagePath.split('/').pop();
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
         }
     </script>
 
