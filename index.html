@@ -17,8 +17,9 @@
             justify-content: center;
         }
         img {
-            height: 1100px;
-            width:1300px;
+            max-width: 70%;
+            height: auto;
+            width:auto;
             display: none;
         }
         input[type="text"]{
@@ -32,26 +33,20 @@
             height: 38px;
             font-size: 25px;
             text-align: center;
+            background-color: #3399ff;
+            
         }
-        .download-button {
-            margin-top: 20px;
-            padding: 10px 20px;
-            font-size: 16px;
-            color: white;
-            background-color: #007bff;
-            text-decoration: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
+        
     </style>
 </head>
 <body>
 
-    
-    <img src="pic.jpg" style="display: inline; width:600px; height: 400px; ">
-    <h1>(ادخل الكود لتحميل النتيجة)</h1>
+    <h5 style="text-align: left;">powered by: Mina Raouf</h5>
+    <img src="pic.jpg" style="display: inline; max-width: 40%;">
+    <h1>نتيجة المستوى الأول - صيف ٢٠٢٤</h1>
+    <h1>(ادخل الكود للاستعلام عن النتيجة)</h1>
     <input type="text" id="idInput" placeholder="ادخل الكود" ><br><br>
-    <button onclick="showPicture()">إظهار</button>
+    <button onclick="showPicture()">استعلام</button>
 
     <div id="imageContainer">
         <img id="picture" alt="Certificate will appear here">
